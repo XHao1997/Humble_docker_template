@@ -1,0 +1,37 @@
+{
+    "name": "ROS2 Humble GUI Dev",
+    "build": {
+        "dockerfile": "Dockerfile",
+        "args": {
+            "USER_UID": "1000",
+            "USER_GID": "1000"
+        }
+    },
+    "remoteUser": "ros",
+    "workspaceFolder": "/home/ros/ros2_ws",
+    "workspaceMount": "source=${localWorkspaceFolder},target=/home/ros/ros2_ws,type=bind",
+    "runArgs": [
+        "-e",
+        "DISPLAY=${env:DISPLAY}",
+        "-v",
+        "/tmp/.X11-unix:/tmp/.X11-unix:rw",
+        "-e",
+        "QT_X11_NO_MITSHM=1",
+        "-e",
+        "LIBGL_ALWAYS_SOFTWARE=1",
+        "--shm-size=1g",
+        "-e", "SDL_AUDIODRIVER=dummy",
+        "-e", "ALSOFT_DRIVERS=null"
+    ],
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-iot.vscode-ros",
+                "ms-vscode.cpptools",
+                "ms-vscode.cmake-tools",
+                "twxs.cmake",
+                "ms-azuretools.vscode-docker"
+            ]
+        }
+    }
+}
